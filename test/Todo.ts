@@ -42,4 +42,14 @@ describe("Todo", function () {
     expect(description).to.equal("You must not wash all clothes");
     expect(isDone).to.equal(false);
   });
+
+  it("Should toggle the status of a todo", async function () {
+    const { todoContract } = await loadFixture(deployTodoContractFixture);
+
+    await todoContract.createTodo("Wash Clothes", "You must wash all clothes");
+
+    await todoContract.toggleTodo(0);
+    const [title, description, isDone] = await todoContract.getTodo(0);
+    expect(isDone).to.equal(true);
+  });
 });
