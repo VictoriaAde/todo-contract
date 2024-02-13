@@ -52,4 +52,20 @@ describe("Todo", function () {
     const [title, description, isDone] = await todoContract.getTodo(0);
     expect(isDone).to.equal(true);
   });
+
+  it("Should delete a todo", async function () {
+    const { todoContract } = await loadFixture(deployTodoContractFixture);
+
+    await todoContract.createTodo("Wash Clothes", "You must wash all clothes");
+
+    await todoContract.deleteTodo(0);
+    // Try to get the deleted todo, it should fail
+    try {
+      await todoContract.getTodo(0);
+      // If getTodo succeeds, it means the todo was not deleted
+      expect.fail("Cannot get todo, it has been deleted");
+    } catch (error) {
+      expect(error.message).to.contain("todo does not exist");
+    }
+  });
 });
