@@ -1,6 +1,6 @@
-# Sample Hardhat Project
+# TODO Smart Contract
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This is a Todo Smart Contract that creates todo, updates todo, get todo and toggle todo status.
 
 Try running some of the following tasks:
 
