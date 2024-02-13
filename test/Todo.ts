@@ -64,7 +64,7 @@ describe("Todo", function () {
       await todoContract.getTodo(0);
       // If getTodo succeeds, it means the todo was not deleted
       expect.fail("Cannot get todo, it has been deleted");
-    } catch (error) {
+    } catch (error: any) {
       expect(error.message).to.contain("todo does not exist");
     }
   });
